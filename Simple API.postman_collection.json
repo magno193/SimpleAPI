@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "53d50ae4-37ed-4e54-a446-d1648d223974",
+		"name": "Simple API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Books",
+			"protocolProfileBehavior": {
+				"strictSSL": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Location",
+						"value": "https://localhost:5000/api/books",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"title\": \"Assim falou Zaratustra\",\r\n\t\"description\": \"Um dos trabalhos filosóficos mais lidos e influentes de todos os tempos, Assim falou Zaratustra talvez deva sua extraordinária fortuna ao seu caráter híbrido: filosofia, religião e literatura nele se juntam de maneira complexa e atraente. Ao publicar Além do bem e do mal, livro imediatamente posterior,\",\r\n\t\"publisher\": \"Companhia de Bolso; 1ª Edição (9 fevereiro 2018)\",\r\n\t\"author\": \"Friedrich Nietzsche\",\r\n\t\"category\": \"Literatura e Ficção\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/books/071a8002-b58d-4547-f96c-08d8743a4745",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books",
+						"071a8002-b58d-4547-f96c-08d8743a4745"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Book",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Um dos trabalhos filosóficos mais lidos e influentes de todos os tempos, Assim falou Zaratustra talvez deva sua extraordinária fortuna ao seu caráter híbrido: filosofia, religião e literatura nele se juntam de maneira complexa e atraente.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/books/10952d7c-9f9a-4b21-9dfe-453a52934bed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books",
+						"10952d7c-9f9a-4b21-9dfe-453a52934bed"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
