@@ -27,6 +27,12 @@ namespace SimpleAPI
         // Connection string configurada em appsettings.json
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
       });
+      services.AddCors(options =>
+      {
+        options.AddPolicy("AllowAll",
+          p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+        );
+      });
       services.AddMediatR(typeof(List.Query).Assembly);
       services.AddControllers();
     }
@@ -40,7 +46,7 @@ namespace SimpleAPI
       }
 
       // app.UseHttpsRedirection();
-
+      app.UseCors("AllowAll");
       app.UseRouting();
 
       app.UseAuthorization();
