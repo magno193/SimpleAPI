@@ -7,6 +7,11 @@ O projeto consiste em realizar criação e listagem de livros de uma biblioteca,
 O Banco de dados está definido (temporariamente) com a *connection string* de um banco hospedado no Azure.
 
 ## API
+### Rodando o projeto
+
+`dotnet run -p .\src\SimpleAPI\`
+
+### Rotas
 
 **Rotas** da API:
 - **GET** List: `/api/books`
