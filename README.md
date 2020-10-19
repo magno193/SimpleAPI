@@ -9,7 +9,9 @@ O Banco de dados está definido (temporariamente) com a *connection string* de u
 ## API
 ### Rodando o projeto
 
-`dotnet run -p .\src\SimpleAPI\`
+```
+dotnet run -p .\src\SimpleAPI\
+```
 
 ### Rotas
 
