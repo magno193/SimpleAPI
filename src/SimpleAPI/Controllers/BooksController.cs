@@ -1,5 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SimpleAPI.Application.Books;
+using SimpleAPI.Models;
 
 namespace SimpleAPI.Controllers
 {
@@ -7,31 +12,41 @@ namespace SimpleAPI.Controllers
   [Route("api/[controller]")]
   public class BooksController : ControllerBase
   {
+    private readonly IMediator _mediator;
+    public BooksController(IMediator mediator)
+    {
+      _mediator = mediator;
+    }
 
-    // GET api/books
     [HttpGet]
-    public ActionResult<IEnumerable<string>> Get()
+    public async Task<ActionResult<List<Book>>> List()
     {
-      return new string[] { "value1", "value2" };
+      return await _mediator.Send(new List.Query());
     }
 
-    // GET api/books/5
     [HttpGet("{id}")]
-    public ActionResult<string> Get(int id)
+    public async Task<ActionResult<Book>> Details(Guid id)
     {
-      return "Alex";
+      return await _mediator.Send(new Details.Query { Id = id });
     }
 
-    // POST api/books
     [HttpPost]
-    public void Post([FromBody] string value) { }
+    public async Task<ActionResult<Unit>> Create([FromBody] Create.Command command)
+    {
+      return await _mediator.Send(command);
+    }
 
-    // PUT api/books/5
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value) { }
+    public async Task<ActionResult<Unit>> Edit(Guid id, [FromBody] Edit.Command command)
+    {
+      command.Id = id;
+      return await _mediator.Send(command);
+    }
 
-    // DELETE api/books/5
     [HttpDelete("{id}")]
-    public void Delete(int id) { }
+    public async Task<ActionResult<Unit>> Delete(Guid id)
+    {
+      return await _mediator.Send(new Delete.Command { Id = id });
+    }
   }
 }
